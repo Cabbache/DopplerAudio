@@ -5,7 +5,7 @@ from scipy.io import wavfile
 fs, sound = wavfile.read('ambulance.wav')
 ch1 = sound[:,0]
 ch1 = ch1 / 2**15
-ch1 = ch1[0:600000]
+ch1 = ch1[100000:700000]
 
 #fs = 44100
 #ch1 = (np.sin(2*np.pi*np.arange(80000)*2000/fs)).astype(np.float32)
@@ -16,9 +16,9 @@ num_samples = ch1.size
 V = 330
 A = -6
 B = 6
-C = 3
+C = 1
 X = np.arange(A,B,(B-A)/(num_samples))
-vels = 30*X/((C**2 + X**2)**0.5)
+vels = 60*X/((C**2 + X**2)**0.5)
 f = (V - vels) / V
 
 #plt.plot(f)
